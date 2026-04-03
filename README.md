@@ -1,16 +1,28 @@
-# React + Vite
+# Tasker — Kanban Task Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beautiful, fully-featured Kanban-style task board built with React and Supabase.
 
-Currently, two official plugins are available:
+## Live Demo
+[Add your Vercel URL here after deployment]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- **Frontend:** React + Vite + Tailwind CSS
+- **Database & Auth:** Supabase (PostgreSQL + Anonymous Auth)
+- **Drag and Drop:** @dnd-kit
+- **Icons:** Lucide React
+- **Hosting:** Vercel
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+- Kanban board with 4 columns (To Do, In Progress, In Review, Done)
+- Drag and drop tasks between columns
+- Guest authentication (anonymous sign-in via Supabase)
+- Row Level Security — each user only sees their own data
+- Create, edit, and delete tasks
+- Task comments with timestamps
+- Task activity log (tracks status changes and edits)
+- Labels/Tags with color coding and filtering
+- Team members and assignees with avatar display
+- Due date indicators (overdue and due soon highlighting)
+- Search tasks by title
+- Filter by label and assignee
+- Board summary stats (total, completed, completion rate, overdue)
