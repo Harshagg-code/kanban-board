@@ -72,16 +72,6 @@ export default function Column({ column, tasks, onAddTask, onTaskDeleted, onTask
                     )}
                 </SortableContext>
             </div>
-
-            {/* Add task button at bottom of column
-            {column.id === 'todo' && (
-                <button
-                    onClick={onAddTask}
-                    className="mt-3 w-full py-2.5 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 text-sm hover:border-primary hover:text-primary transition-colors"
-                >
-                    + Add Task
-                </button>
-            )} */}
         </div>
     )
 }

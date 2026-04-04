@@ -71,7 +71,7 @@ export default function EditTaskModal({ task, onClose, onTaskUpdated, members = 
             return
         }
 
-        // Detect what changed — declared FIRST
+
         const changes = []
         if (title.trim() !== task.title) changes.push('Title updated')
         if (description.trim() !== (task.description || '')) changes.push('Description updated')
@@ -79,7 +79,6 @@ export default function EditTaskModal({ task, onClose, onTaskUpdated, members = 
         if (dueDate !== (task.due_date || '')) changes.push('Due date updated')
         if (selectedAssignees.length !== (task.assignee_ids?.length || 0)) changes.push('Assignees updated')
 
-        // Delete old labels and re-insert
         await supabase.from('task_labels').delete().eq('task_id', task.id)
         if (selectedLabels.length > 0) {
             await supabase.from('task_labels').insert(
@@ -90,7 +89,7 @@ export default function EditTaskModal({ task, onClose, onTaskUpdated, members = 
             )
         }
 
-        // Delete old assignees and re-insert
+
         await supabase.from('task_assignees').delete().eq('task_id', task.id)
         if (selectedAssignees.length > 0) {
             await supabase.from('task_assignees').insert(

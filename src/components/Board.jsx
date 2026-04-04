@@ -34,7 +34,7 @@ export default function Board({ session, searchQuery }) {
     const [activeTask, setActiveTask] = useState(null)
     const [editingTask, setEditingTask] = useState(null)
     const [allLabels, setAllLabels] = useState([])
-    const [taskLabels, setTaskLabels] = useState({}) // { taskId: [label, label] }
+    const [taskLabels, setTaskLabels] = useState({})
     const [showLabelManager, setShowLabelManager] = useState(false)
     const [filterLabel, setFilterLabel] = useState(null)
     const [selectedTask, setSelectedTask] = useState(null)
@@ -82,7 +82,6 @@ export default function Board({ session, searchQuery }) {
         if (!error) setTasks(tasksData)
         if (labelsData) setAllLabels(labelsData)
 
-        // Build a map of taskId -> labels array
         if (taskLabelsData && labelsData) {
             const map = {}
             taskLabelsData.forEach(tl => {
@@ -157,7 +156,7 @@ export default function Board({ session, searchQuery }) {
             return
         }
 
-        // Different column — update status
+
         setTasks(prev =>
             prev.map(t => t.id === activeId ? { ...t, status: targetColumnId } : t)
         )
@@ -173,7 +172,7 @@ export default function Board({ session, searchQuery }) {
             return
         }
 
-        // Log the activity
+
         const fromLabel = COLUMNS.find(c => c.id === activeTask.status)?.label
         const toLabel = COLUMNS.find(c => c.id === targetColumnId)?.label
         await logActivity(activeId, session.user.id, `Moved from ${fromLabel} → ${toLabel}`)
@@ -187,7 +186,7 @@ export default function Board({ session, searchQuery }) {
     const handleTaskUpdated = async (updatedTask, changes = []) => {
         await fetchTasks()
 
-        // Log each change
+
         for (const change of changes) {
             await logActivity(updatedTask.id, session.user.id, change)
         }
@@ -199,14 +198,14 @@ export default function Board({ session, searchQuery }) {
         setSelectedTask(task)
     }
     const handleTaskDeleted = async (taskId) => {
-        // Delete from Supabase
+
         const { error } = await supabase
             .from('tasks')
             .delete()
             .eq('id', taskId)
 
         if (!error) {
-            // Only remove from UI if Supabase delete succeeded
+
             setTasks(prev => prev.filter(t => t.id !== taskId))
         } else {
             console.error('Delete error:', error)
