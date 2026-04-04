@@ -3,7 +3,7 @@
 A beautiful, fully-featured Kanban-style task board built with React and Supabase.
 
 ## Live Demo
-[Add your Vercel URL here after deployment]
+https://kanban-board-eta-gold.vercel.app/
 
 ## Tech Stack
 - **Frontend:** React + Vite + Tailwind CSS
